@@ -1,0 +1,41 @@
+.App {
+  text-align: center;
+  color: white;
+  display: flex;
+	flex-direction: column;
+	height: 100vh;
+
+}
+
+.App-Content{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 0 auto;
+ 
+}
+
+.App-Footer {
+  flex: 0 0 auto;
+}
+
+.Footer-Info {
+margin: 0.5em;
+}
+
+/* for Footer icons */
+.ui.circular.button{
+  background:none;
+}
+/* */
+
+.Main-Button{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Main-Button button{
+  min-width: 120px;
+}
