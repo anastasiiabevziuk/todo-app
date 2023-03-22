@@ -1,7 +1,7 @@
 import Registration from './Registration';
 import Login from './Login';
 import Main from './Main';
-import List from './List';
+import Lists from './Lists';
 import Items from './Items';
 import Footer from './Footer';
 import Header from './Header';
@@ -17,7 +17,7 @@ function App() {
         <Main />
         <Login />
         <Registration />
-        <List />
+        <Lists />
         <Items />
       </div>
       <div className='App-Footer'>

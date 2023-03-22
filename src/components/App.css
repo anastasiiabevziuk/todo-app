@@ -39,3 +39,15 @@ margin: 0.5em;
 .Main-Button button{
   min-width: 120px;
 }
+
+.Lists-Items{
+  color:aliceblue !important;
+}
+
+.Lists-Container{
+  min-width: 50vw;
+}
+
+.Segment-Add {
+  background: #5dd0ca !important;
+}
