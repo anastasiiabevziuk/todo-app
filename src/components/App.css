@@ -20,6 +20,19 @@
   flex: 0 0 auto;
 }
 
+.Menu-Header {
+  color: white !important;
+}
+
+.Menu-Header div {
+  background: #5dd0ca !important;
+  font-weight: 400 !important;
+}
+
+.Menu-Header div span{
+  color: white !important;
+}
+
 .Footer-Info {
 margin: 0.5em;
 }
