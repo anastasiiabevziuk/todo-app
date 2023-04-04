@@ -1,50 +1,64 @@
-import { List, Segment, Icon, Input, Checkbox } from 'semantic-ui-react'
+import { useState } from 'react';
+import { List, Segment, Input, Checkbox, Button } from 'semantic-ui-react'
+import { useAppDispatch, useAppSelector } from '../store/hooks/redux';
+import { todoSlice } from '../store/reducers/todoSlice';
+import { Link } from 'react-router-dom';
+
 
 function Items() {
+    const [inputValue, setInputValue] = useState("");
+
+
+    const { addTodo, deleteTodo, completeTodo } = todoSlice.actions;
+    const dispatch = useAppDispatch();
+    const todos = useAppSelector((state) => state.todoReducer);
+
+
     return (
         <div>
-            <h1>Елементи</h1>
+            <div className='Items-Header-Content'>
+                <Link to="/lists">
+                    <Button inverted basic color='teal' icon="arrow left" size="mini" />
+                </Link>
+                <h1>Елементи</h1>
+            </div>
+
             <Segment className="Segment-Add" inverted>
                 <Input
-                    action={{
-                        color: 'teal',
-                        labelPosition: 'right',
-                        icon: 'add',
-                        content: 'Add',
-                        inverted: true,
-                    }}
-                    defaultValue=''
+                    value={inputValue}
+                    onChange={event => setInputValue(event.currentTarget.value)}
                 />
+                <Button icon='add' color='teal' content='Add' inverted onClick={event => {
+                    event.preventDefault();
+                    dispatch(addTodo(inputValue));
+                    setInputValue("");
+                }}>
+
+                </Button>
             </Segment>
             <Segment inverted color='teal'>
                 <h4>В процесі</h4>
                 <List divided verticalAlign='middle' className='Lists-Container' >
 
-                    <List.Item className="Lists-Items" onClick={() => console.log("item")} as='a'>
+                    {todos.map(todo => (<List.Item key={todo.id} className="Lists-Items" as='a'>
                         <List.Content floated='right'>
-                            <Icon name='favorite' />
+                            <Button basic icon='delete' size="mini" onClick={() => dispatch(deleteTodo(String(todo.id)))} />
                         </List.Content>
                         <List.Content floated='left'>
-                            <Checkbox radio />
+                            <Checkbox
+                                radio
+                                checked={todo.completed}
+                                onClick={() => dispatch(completeTodo(String(todo.id)))}
+                            />
                         </List.Content>
-                        <List.Content>To Do</List.Content>
+                        <List.Content onClick={() => dispatch(completeTodo(String(todo.id)))} verticalAlign="top">{todo.message}</List.Content>
                     </List.Item>
+
+                    ))}
                 </List>
             </Segment >
 
-            <Segment inverted color='teal'>
-                <h4>Історія</h4>
 
-                <List divided verticalAlign='middle' className='Lists-Container' >
-
-                    <List.Item className="Lists-Items" onClick={() => console.log("item")} as='a'>
-                        <List.Content floated='left'>
-                            <Checkbox radio checked />
-                        </List.Content>
-                        <List.Content>To Do</List.Content>
-                    </List.Item>
-                </List>
-            </Segment >
         </div >
 
     );

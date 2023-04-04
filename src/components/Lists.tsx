@@ -1,38 +1,48 @@
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 import { List, Segment, Button, Input } from 'semantic-ui-react'
+import { listSlice } from '../store/reducers/listsSlice';
+import { useAppDispatch, useAppSelector } from '../store/hooks/redux';
+
 
 
 function Lists() {
+    const [inputValueList, setInputValueList] = useState("");
+
+
+    const { addList, deleteList, activeItems } = listSlice.actions;
+    const dispatch = useAppDispatch();
+    const list = useAppSelector((state) => state.listReducer);
+
     return (
         <div>
             <h1>Список</h1>
             <Segment className="Segment-Add" inverted>
                 <Input
-                    action={{
-                        color: 'teal',
-                        labelPosition: 'right',
-                        icon: 'add',
-                        content: 'Add',
-                        inverted: true,
-                    }}
-                    defaultValue=''
+                    value={inputValueList}
+                    onChange={event => setInputValueList(event.currentTarget.value)}
                 />
+                <Button icon='add' color='teal' content='Add' inverted onClick={event => {
+                    event.preventDefault();
+                    dispatch(addList(inputValueList));
+                    setInputValueList("");
+                }}>
+
+                </Button>
             </Segment>
             <Segment inverted color='teal'>
+                <h4>Всі: </h4>
                 <List divided verticalAlign='middle' className='Lists-Container' >
-                    <List.Item className="Lists-Items" onClick={() => console.log("item")} as='a'>
+                    {list.map(list => (<List.Item key={list.id} className="Lists-Items" >
                         <List.Content floated='right'>
-                            <Button size="small" onClick={() => console.log("delite")} inverted color='teal'>Видалити</Button>
+                            <Button basic icon='delete' size="mini" onClick={() => dispatch(deleteList(String(list.id)))} />
                         </List.Content>
-                        <List.Content>To Do</List.Content>
-                    </List.Item>
-                    <List.Item className="Lists-Items" onClick={() => console.log("item")} as='a'>
-                        <List.Content floated='right'>
-                            <Button size="small" onClick={() => console.log("delite")} inverted color='teal'>Видалити</Button>
-                        </List.Content>
-                        <List.Content>To Do</List.Content>
+                        <Link to="/items" className='Lists-Link-Container' >
+                            <List.Content onClick={() => dispatch(activeItems(String(list.id)))} verticalAlign="top">{list.name}</List.Content>
+                        </Link>
                     </List.Item>
 
-
+                    ))}
                 </List>
             </Segment >
         </div >
@@ -41,3 +51,4 @@ function Lists() {
 }
 
 export default Lists;
+

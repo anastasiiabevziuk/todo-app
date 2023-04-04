@@ -1,4 +1,5 @@
-import { Button, Form, Segment } from 'semantic-ui-react'
+import { Link } from 'react-router-dom';
+import { Button, Form, Segment, Label } from 'semantic-ui-react'
 
 
 function Registration() {
@@ -13,7 +14,10 @@ function Registration() {
                         <Form.Input required fluid label='Пароль' placeholder='Пароль' />
                         <Form.Input required fluid label='Повторити пароль' placeholder='Пароль' />
                     </Form.Group>
-                    <Form.Checkbox label='I agree to the Terms and Conditions' />
+                    <Link to="/login">
+                        <Label color='teal' pointing >Є акаунту, вхід</Label>
+                    </Link>
+                    <Form.Checkbox label='Я погоджуюся з Умовами використання' />
                     <Button inverted color='teal' onClick={() => console.log("submit")} type='submit'>Підтвердити</Button>
                 </Form>
             </Segment>

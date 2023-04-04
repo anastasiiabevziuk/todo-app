@@ -16,17 +16,27 @@
  
 }
 
+.Items-Header-Content{
+  display: flex;
+  flex-direction: row;
+  align-items: end;
+  justify-content: center;
+  
+}
+
 .App-Footer {
   flex: 0 0 auto;
 }
 
 .Menu-Header {
   color: white !important;
+  background: #5dd0ca !important;
 }
 
 .Menu-Header div {
   background: #5dd0ca !important;
   font-weight: 400 !important;
+
 }
 
 .Menu-Header div span{
@@ -34,7 +44,7 @@
 }
 
 .Footer-Info {
-margin: 0.5em;
+  margin: 0.5em;
 }
 
 /* for Footer icons */
@@ -63,4 +73,9 @@ margin: 0.5em;
 
 .Segment-Add {
   background: #5dd0ca !important;
+}
+
+.Lists-Link-Container {
+  color: white;
+
 }
