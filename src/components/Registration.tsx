@@ -4,8 +4,8 @@ import { Button, Form, Segment, Label } from 'semantic-ui-react'
 
 function Registration() {
     return (
-        <div>
-            <h1>Реєстрація</h1>
+        <>
+            <h1 className='Text'>Реєстрація</h1>
             <Segment inverted color='teal'>
                 <Form inverted>
                     <Form.Group grouped widths='equal'>
@@ -21,7 +21,7 @@ function Registration() {
                     <Button inverted color='teal' onClick={() => console.log("submit")} type='submit'>Підтвердити</Button>
                 </Form>
             </Segment>
-        </div>
+        </>
     );
 }
 

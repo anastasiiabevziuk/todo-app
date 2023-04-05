@@ -1,10 +1,35 @@
+:root {
+  --pp-purple: #fc00ff;
+  --pp-blue: #16577f;
+  --pp-ltblue: #00dbde;
+  --sp-yellow: #efe948;
+
+}
+
+
 * {
 	margin: 0;
 	padding: 0;
  
 }
 
+
 body {
   font-family: "Lucida Console", "Courier New", monospace !important;
-  background: linear-gradient(to right, #fc00ff, #00dbde)!important;
+  background-image: linear-gradient(to right, var(--pp-blue),var(--pp-ltblue),var(--sp-yellow),var(--pp-purple),var(--pp-blue)) !important;
+  background-size: 600% !important;
+  /* background-position: 0 0 !important; */
+  box-shadow: inset 0 0 5em rgba(0,0,0,.5) !important;
+  animation-duration: 50s !important;
+  animation-iteration-count: infinite !important;
+  animation-name: gradients !important;
+}
+
+@keyframes gradients {
+    0%   {background-position: 0 0;}
+    25% {background-position: 50% 0;}
+    50% {background-position: 90% 0;}
+    60% {background-position: 60%;}
+    75% {background-position: 40%;}
+    100%  {background-position: 0 0;}
 }

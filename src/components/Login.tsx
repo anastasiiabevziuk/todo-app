@@ -4,8 +4,8 @@ import { Button, Form, Label, Segment } from 'semantic-ui-react'
 
 function Login() {
     return (
-        <div>
-            <h1>Вхід</h1>
+        <>
+            <h1 className='Text'>Вхід</h1>
             <Segment inverted color='teal'>
                 <Form inverted>
                     <Form.Group grouped widths='equal'>
@@ -20,7 +20,7 @@ function Login() {
                     <Button onClick={() => console.log("submit")} inverted color='teal' type='submit'>Підтвердити</Button>
                 </Form>
             </Segment>
-        </div>
+        </>
 
     );
 }

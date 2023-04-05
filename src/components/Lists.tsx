@@ -16,7 +16,13 @@ function Lists() {
 
     return (
         <div>
-            <h1>Список</h1>
+            <div className='Items-Header-Content'>
+                <Link to="/">
+                    <Button inverted basic color='teal' icon="arrow left" size="mini" />
+                </Link>
+                <h1 className='Text'>Список</h1>
+            </div>
+
             <Segment className="Segment-Add" inverted>
                 <Input
                     value={inputValueList}
@@ -30,6 +36,7 @@ function Lists() {
 
                 </Button>
             </Segment>
+
             <Segment inverted color='teal'>
                 <h4>Всі: </h4>
                 <List divided verticalAlign='middle' className='Lists-Container' >
@@ -45,7 +52,7 @@ function Lists() {
                     ))}
                 </List>
             </Segment >
-        </div >
+        </ div>
 
     );
 }

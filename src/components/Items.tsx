@@ -16,11 +16,12 @@ function Items() {
 
     return (
         <div>
+
             <div className='Items-Header-Content'>
                 <Link to="/lists">
                     <Button inverted basic color='teal' icon="arrow left" size="mini" />
                 </Link>
-                <h1>Елементи</h1>
+                <h1 className='Text'>Елементи</h1>
             </div>
 
             <Segment className="Segment-Add" inverted>

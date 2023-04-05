@@ -7,7 +7,10 @@ function Main() {
 
     return (
         <>
-            <h1>Привіт</h1>
+
+            <h1 className='Text'>Привіт</h1>
+
+
             <div className='Main-Button'>
                 <Link to="/login">
                     <Button inverted color='teal'>Вхід</Button>
