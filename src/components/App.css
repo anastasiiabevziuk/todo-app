@@ -92,6 +92,10 @@
   
 }
 
+.dimmer{
+  height: 100vh !important;
+}
+
 @keyframes printed_text {
   from {
     width: 0;

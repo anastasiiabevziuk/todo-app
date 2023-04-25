@@ -6,6 +6,7 @@ import Lists from './Lists';
 import Items from './Items';
 import Footer from './Footer';
 import Header from './Header';
+import Loading from './Loading';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PrivateRoute from "../utils/privateRoute";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -25,11 +26,7 @@ function App() {
   }, [isAuthenticated]);
 
   if (isLoading) {
-    return (
-      <div >
-        Зачекайте
-      </div>
-    );
+    return <Loading />
   }
 
   return (
