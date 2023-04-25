@@ -18,10 +18,16 @@ function Items() {
         <div>
 
             <div className='Items-Header-Content'>
-                <Link to="/lists">
-                    <Button inverted basic color='teal' icon="arrow left" size="mini" />
-                </Link>
-                <h1 className='Text'>Елементи</h1>
+                <div>
+                    <Link to="/lists">
+                        <Button inverted basic color='teal' icon="arrow left" size="mini" />
+                    </Link>
+                </div>
+
+                <div className='Text-Container'>
+                    <h1 className='Text'>Елементи</h1>
+                </div>
+
             </div>
 
             <Segment className="Segment-Add" inverted>

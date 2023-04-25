@@ -17,10 +17,16 @@ function Lists() {
     return (
         <div>
             <div className='Items-Header-Content'>
-                <Link to="/">
-                    <Button inverted basic color='teal' icon="arrow left" size="mini" />
-                </Link>
-                <h1 className='Text'>Список</h1>
+                <div>
+                    <Link to="/">
+                        <Button inverted basic color='teal' icon="arrow left" size="mini" />
+                    </Link>
+                </div>
+
+                <div className='Text-Container'>
+                    <h1 className='Text'>Список</h1>
+                </div>
+
             </div>
 
             <Segment className="Segment-Add" inverted>
