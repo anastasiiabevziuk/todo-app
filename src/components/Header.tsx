@@ -1,5 +1,5 @@
 import { Dropdown, Input, Menu } from 'semantic-ui-react'
-
+import { useAuth0 } from "@auth0/auth0-react";
 
 const languageOptions = [
     { key: 'English', text: 'English', value: 'English' },
@@ -7,6 +7,8 @@ const languageOptions = [
 ]
 
 function Header() {
+    const { logout } = useAuth0();
+
     return (
 
         <div>
@@ -30,7 +32,7 @@ function Header() {
                     <Menu.Item
                         name='Вихід'
                         active={'logout' === 'logout'}
-                        onClick={() => console.log("log")}
+                        onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
                         className='Menu-Header'
                     />
                 </Menu.Menu>

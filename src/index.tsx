@@ -2,18 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './components/App';
-import { BrowserRouter } from 'react-router-dom';
+import { Auth0Provider } from "@auth0/auth0-react";
+import 'semantic-ui-css/semantic.min.css';
+import { domain, clientId } from './auth_config';
 
-import 'semantic-ui-css/semantic.min.css'
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
 
+  <Auth0Provider
+    domain={domain}
+    clientId={clientId}
+    authorizationParams={{
+      redirect_uri: "https://localhost:3000/lists" || window.location.origin
+    }}
+  >
+    <App />
+  </Auth0Provider>,
 
 );
 
