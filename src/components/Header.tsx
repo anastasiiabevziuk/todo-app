@@ -1,13 +1,16 @@
-import { Dropdown, Input, Menu } from 'semantic-ui-react'
+import { Button, Menu } from 'semantic-ui-react'
 import { useAuth0 } from "@auth0/auth0-react";
+import { useTranslation } from 'react-i18next';
 
-const languageOptions = [
-    { key: 'English', text: 'English', value: 'English' },
-    { key: 'Українська', text: 'Українська', value: 'Українська' },
-]
 
 function Header() {
-    const { logout } = useAuth0();
+    const { logout, isAuthenticated } = useAuth0();
+
+    const { t, i18n } = useTranslation();
+
+    const changeLanguage = (language: "ua" | "en") => {
+        i18n.changeLanguage(language);
+    }
 
     return (
 
@@ -15,26 +18,13 @@ function Header() {
             <Menu className='Menu-Header' attached='top'>
                 <Menu.Menu position='right'>
                     <Menu.Item>
-                        <Input icon='search' placeholder='Search...' />
+                        <Button active={i18n.resolvedLanguage === 'en'} color='teal' inverted onClick={() => changeLanguage('en')}>EN</Button>
+                        <Button active={i18n.resolvedLanguage === 'ua'} color='teal' inverted onClick={() => changeLanguage('ua')}>UA</Button>
                     </Menu.Item>
                     <Menu.Item>
-                        <Dropdown
-                            button
-                            className='icon Menu-Header'
-                            floating
-                            labeled
-                            icon='world'
-                            options={languageOptions}
-                            search
-                            text='Українська'
-                        />
+                        {isAuthenticated && <Button size="tiny" color='teal' inverted onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}>{t("logout")}</Button>}
                     </Menu.Item>
-                    <Menu.Item
-                        name='Вихід'
-                        active={'logout' === 'logout'}
-                        onClick={() => logout({ logoutParams: { returnTo: window.location.origin } })}
-                        className='Menu-Header'
-                    />
+
                 </Menu.Menu>
             </Menu>
         </div>

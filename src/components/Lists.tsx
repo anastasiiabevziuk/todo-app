@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { List, Segment, Button, Input } from 'semantic-ui-react'
 import { listSlice } from '../store/reducers/listsSlice';
 import { useAppDispatch, useAppSelector } from '../store/hooks/redux';
-
+import { useTranslation } from 'react-i18next';
 
 
 function Lists() {
@@ -14,19 +14,13 @@ function Lists() {
     const dispatch = useAppDispatch();
     const list = useAppSelector((state) => state.listReducer);
 
+    const { t } = useTranslation();
+
     return (
         <div>
-            <div className='Items-Header-Content'>
-                <div>
-                    <Link to="/">
-                        <Button inverted basic color='teal' icon="arrow left" size="mini" />
-                    </Link>
-                </div>
 
-                <div className='Text-Container'>
-                    <h1 className='Text'>Список</h1>
-                </div>
-
+            <div className='Items-Header-Content Text-Container'>
+                <h1 className='Text'>{t("lists")}</h1>
             </div>
 
             <Segment className="Segment-Add" inverted>
@@ -34,17 +28,17 @@ function Lists() {
                     value={inputValueList}
                     onChange={event => setInputValueList(event.currentTarget.value)}
                 />
-                <Button icon='add' color='teal' content='Add' inverted onClick={event => {
+                <Button color='teal' inverted onClick={event => {
                     event.preventDefault();
                     dispatch(addList(inputValueList));
                     setInputValueList("");
                 }}>
-
+                    {t("add")}
                 </Button>
             </Segment>
 
             <Segment inverted color='teal'>
-                <h4>Всі: </h4>
+                <h4>{t("all")} </h4>
                 <List divided verticalAlign='middle' className='Lists-Container' >
                     {list.map(list => (<List.Item key={list.id} className="Lists-Items" >
                         <List.Content floated='right'>

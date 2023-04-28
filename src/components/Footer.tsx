@@ -1,9 +1,10 @@
 import { Icon } from 'semantic-ui-react'
-
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
 
     let now = new Date();
+    const { t } = useTranslation();
 
     return (
         <div>
@@ -20,7 +21,7 @@ function Footer() {
 
             </div>
             <p className='Footer-Info'>
-                Київ {now.getFullYear()}
+                {t("city")} {now.getFullYear()}
             </p>
         </div>
     );

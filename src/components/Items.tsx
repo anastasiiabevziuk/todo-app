@@ -3,7 +3,7 @@ import { List, Segment, Input, Checkbox, Button } from 'semantic-ui-react'
 import { useAppDispatch, useAppSelector } from '../store/hooks/redux';
 import { todoSlice } from '../store/reducers/todoSlice';
 import { Link } from 'react-router-dom';
-
+import { useTranslation } from 'react-i18next';
 
 function Items() {
     const [inputValue, setInputValue] = useState("");
@@ -12,7 +12,7 @@ function Items() {
     const { addTodo, deleteTodo, completeTodo } = todoSlice.actions;
     const dispatch = useAppDispatch();
     const todos = useAppSelector((state) => state.todoReducer);
-
+    const { t } = useTranslation();
 
     return (
         <div>
@@ -25,7 +25,7 @@ function Items() {
                 </div>
 
                 <div className='Text-Container'>
-                    <h1 className='Text'>Елементи</h1>
+                    <h1 className='Text'>{t("elements")}</h1>
                 </div>
 
             </div>
@@ -35,12 +35,12 @@ function Items() {
                     value={inputValue}
                     onChange={event => setInputValue(event.currentTarget.value)}
                 />
-                <Button icon='add' color='teal' content='Add' inverted onClick={event => {
+                <Button color='teal' inverted onClick={event => {
                     event.preventDefault();
                     dispatch(addTodo(inputValue));
                     setInputValue("");
                 }}>
-
+                    {t("add")}
                 </Button>
             </Segment>
             <Segment inverted color='teal'>
