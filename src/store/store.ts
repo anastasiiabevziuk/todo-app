@@ -1,23 +1,22 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit'
-import todoReducer from './reducers/todoSlice';
-import listReducer from './reducers/listsSlice';
-
-const rootReducer = combineReducers({
-  todoReducer, 
-  listReducer
-})
+import { configureStore } from '@reduxjs/toolkit';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
+import { listsApi } from '../api/listApi';
+import { itemsApi } from '../api/itemApi';
+import authSlice from "./slice/authSlice";
 
 
-export const setupStore = () =>{
-  return configureStore({
-      reducer: rootReducer
 
-  })
-}
+export const store = configureStore({
+    reducer: {
+        [listsApi.reducerPath]: listsApi.reducer,
+        [itemsApi.reducerPath]: itemsApi.reducer,
+        authSlice,
+    },
+    middleware: (getDefaultMiddlware) => getDefaultMiddlware().concat([listsApi.middleware, itemsApi.middleware]),
+    
+});
 
-export type RootState = ReturnType<typeof rootReducer>
-
-export type AppStore =  ReturnType<typeof setupStore>
-
-export type AppDispatch = AppStore['dispatch']
-
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch: () => AppDispatch = useDispatch
+export type RootState = ReturnType<typeof store.getState>
+export const useTypedSelector: TypedUseSelectorHook<RootState> = useSelector

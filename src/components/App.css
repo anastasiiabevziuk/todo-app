@@ -66,12 +66,32 @@
 }
 
 .Lists-Items{
+  display: ruby-text!important;
   color:aliceblue !important;
+  text-align: left;
 }
 
 .Lists-Container{
-  min-width: 50vw;
+  min-width: 50vw ;
+
 }
+
+.Form-Update {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+.Input-Update  {
+  background:  #00b5ad !important;
+  color:aliceblue !important;
+  padding: 0 !important;
+  border: none !important;
+  caret-color : red!important;
+  min-width: 50vw !important;
+  
+}
+
 
 .Segment-Add {
   display: flex;
@@ -98,6 +118,37 @@
   flex-grow: 1;
   justify-content: center;
 }
+
+.Filter-Conteiner{
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between
+}
+
+.Dropdowm-Filter {
+  background:  #54ffff !important;
+}
+
+.Checkbox-Items {
+  padding-top: 0.2em;
+  margin-left: 0.2em;
+  
+}
+
+.Checkbox-Items label::before {
+  background-color: #50b1b1 !important
+  
+}
+.Checkbox-Items label::after {
+  background-color: #54ffff !important;
+  
+}
+
+.Item-Done {
+  text-decoration: line-through !important;
+}
+
 
 .dimmer{
   height: 100vh !important;

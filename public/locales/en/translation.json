@@ -8,5 +8,11 @@
     "city": "Kyiv",
     "all": "All",
     "progress": "In progress",
-    "add": "Add"
+    "add": "Add",
+    "filterNew": "New",
+    "filterOld": "Old",
+    "filterAll": "All",
+    "filterDone": "Done",
+    "filterInProgress": "In progress"
+
 }

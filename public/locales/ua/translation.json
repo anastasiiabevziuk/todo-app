@@ -8,5 +8,10 @@
     "city": "Київ",
     "all": "Всі",
     "progress": "В процесі",
-    "add": "Додати"
+    "add": "Додати",
+    "filterNew": "Нові",
+    "filterOld": "Старі",
+    "filterAll": "Всі",
+    "filterDone": "Готові",
+    "filterInProgress": "В процесі"
 }
