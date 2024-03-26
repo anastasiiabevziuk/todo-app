@@ -3,6 +3,7 @@ import { toDoApi } from './toDoApiTest';
 import IItem from './interfaces/iItem';
 import { IItemsPostDto, IItemsPutDto } from './interfaces/dto';
 import { RootState } from '../store/store';
+import {isTest} from "../auth_config";
 
 
 // for test token
@@ -10,7 +11,6 @@ let userToken: string | null | undefined = undefined;
 toDoApi.getToken()
   .then(result => userToken = result)
 
- const isTestToken = false;
 
 
 export const itemsApi = createApi({
@@ -20,7 +20,7 @@ export const itemsApi = createApi({
     baseUrl: '/',
     prepareHeaders: (headers, { getState }) => {
       
-      const token = isTestToken? userToken: (getState() as RootState).authSlice;
+      const token = isTest? userToken: (getState() as RootState).authSlice;
 
       if (token) {
         headers.set('authorization', `Bearer ${token}`)
