@@ -16,11 +16,13 @@
     "module": "esnext",
     "moduleResolution": "node",
     "resolveJsonModule": true,
+    //"resolve.fallback": { "path": require.resolve("path-browserify") },
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx"
-  },
+  }, 
   "include": [
     "src"
-  ]
+  ],
+  
 }
